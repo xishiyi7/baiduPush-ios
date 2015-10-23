@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+  id="com.xishiyi7.baidupushios”
+  version="1.0.0">
+  <name>BaiduPushIos</name>
+  <description>Cordova BaiduPush Plugin For IOS</description>
+  <keywords>cordova,baidu,baidupush,push,ios,plugin</keywords>
+  <repo>https://github.com/xishiyi7/baiduPush-ios.git</repo>
+  <js-module src="www/baidu_push.js" name="baidu_push">
+    <clobbers target="baidu_push" />
+  </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="BaiduPush">
+                <param name="ios-package" value="BaiduPushPlugin"/>
+            </feature>
+        </config-file>
+        
+        <header-file src="src/ios/BaiduPushPlugin.h" />
+        <source-file src="src/ios/BaiduPushPlugin.m" />
+
+      <!-- Wechat Official -->
+      <header-file src="libs/ios/BPush.h" />
+      <source-file src="libs/ios/libBPush.a" framework="true" />
+      
+      <!—- replace the AppDelegate.m in the project —>
+      <source-file src=“libs/ios/AppDelegate_rp.m” />
+
+      <!-- Other required frameworks -->
+      <framework src="libz.dylib" />
+      <framework src="Foundation.framework" />
+      <framework src="CoreTelephony.framework" />
+      <framework src="SystemConfiguration.framework" />
+
+    </platform>
+</plugin>
